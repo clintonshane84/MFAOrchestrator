@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+htmlcov/
+dist/
+alembic/versions/*.pyc
+app.db
