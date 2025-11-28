@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Optional
 
 from sqlmodel import SQLModel, Field, Column, JSON
 
@@ -38,9 +37,7 @@ class TaskDB(SQLModel, table=True):
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
-    result: dict | None = Field(
-        sa_column=Column(JSON, nullable=True)
-    )
+    result: dict | None = Field(sa_column=Column(JSON, nullable=True))
     error: str | None = None
 
 
@@ -54,17 +51,10 @@ class MessageDB(SQLModel, table=True):
     role: MessageRole
     content: str
     created_at: datetime = Field(default_factory=datetime.utcnow)
-    metadata: dict | None = Field(
-        sa_column=Column(JSON, nullable=True),
-        default=None,
-    )
+    metadata: dict | None = Field(sa_column=Column(JSON, nullable=True), default=None)
 
 
 class AgentDescriptorDB(SQLModel, table=True):
-    """
-    Optional persistence for registered agents (for admin UI).
-    For now the registry is in-memory; this is ready when you need it.
-    """
     __tablename__ = "agents"
 
     id: str = Field(primary_key=True)
