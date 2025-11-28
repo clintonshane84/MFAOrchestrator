@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 
-from app.api.routes import agents, sessions, tasks, human_review
+from app.api.routes import agents, sessions, tasks, human_review, workflows
 from app.core.logging import configure_logging
 from app.core.db import init_db
 from app.api.dependencies import init_container
@@ -27,6 +27,7 @@ def create_app() -> FastAPI:
     app.include_router(sessions.router, prefix="/sessions", tags=["sessions"])
     app.include_router(tasks.router, prefix="/tasks", tags=["tasks"])
     app.include_router(human_review.router, prefix="/human-review", tags=["human-review"])
+    app.include_router(workflows.router, prefix="/workflows", tags=["workflows"])
 
     @app.on_event("startup")
     async def on_startup() -> None:  # noqa: D401
