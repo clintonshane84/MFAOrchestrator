@@ -1,8 +1,7 @@
 # app/api/routes/human_review.py
 from __future__ import annotations
 
-from fastapi import APIRouter
-
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
 from app.services.orchestrator_service import OrchestratorService
@@ -23,7 +22,7 @@ class HumanRejectRequest(BaseModel):
 async def request_human(
     task_id: str,
     body: HumanApprovalRequest,
-    orchestrator: OrchestratorService = get_orchestrator_service,  # adjust wiring to match your DI pattern
+    orchestrator: OrchestratorService = Depends(get_orchestrator_service),
 ):
     return await orchestrator.request_human_approval(task_id, body.note)
 
@@ -31,7 +30,7 @@ async def request_human(
 @router.post("/{task_id}/approve", summary="Approve a waiting task")
 async def approve_task(
     task_id: str,
-    orchestrator: OrchestratorService = get_orchestrator_service,
+    orchestrator: OrchestratorService = Depends(get_orchestrator_service),
 ):
     return await orchestrator.approve_task(task_id)
 
@@ -40,6 +39,6 @@ async def approve_task(
 async def reject_task(
     task_id: str,
     body: HumanRejectRequest,
-    orchestrator: OrchestratorService = get_orchestrator_service,
+    orchestrator: OrchestratorService = Depends(get_orchestrator_service),
 ):
     return await orchestrator.reject_task(task_id, body.reason)

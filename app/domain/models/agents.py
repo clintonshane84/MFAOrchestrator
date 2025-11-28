@@ -11,6 +11,9 @@ class AgentRole(str, Enum):
     DBA = "dba"
     DEVOPS = "devops"
     QA_TESTER = "qa_tester"
+    TECH_LEAD = "tech_lead"
+    SYSTEM_ARCHITECT = "system_architect"
+    BACKEND_DEV = "backend_dev"
 
 
 class AgentDescriptor(BaseModel):

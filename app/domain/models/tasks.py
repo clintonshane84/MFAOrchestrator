@@ -3,9 +3,9 @@ from __future__ import annotations
 
 from datetime import datetime
 from enum import Enum
-from typing import Any, Literal
+from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class TaskStatus(str, Enum):
@@ -29,9 +29,20 @@ class TaskType(str, Enum):
     INVESTIGATION = "investigation"
     DESIGN = "design"
     OTHER = "other"
+    REVIEW = "review"
+    REQUIREMENTS_GATHERING = "requirements_gathering"
+    CODE_SKELETON = "code_skeleton"
+    TEST_GENERATION = "test_generation"
 
 
 class Task(BaseModel):
+    """
+    Domain-level Task model used in services and API.
+    Backed by TaskDB via SQLModel; validated with from_attributes=True.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
     id: str
     session_id: str
     agent_id: str

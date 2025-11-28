@@ -1,8 +1,17 @@
-from fastapi import FastAPI
+# main.py
+from __future__ import annotations
 
-app = FastAPI()
+import uvicorn
 
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
+def main() -> None:
+    uvicorn.run(
+        "app.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True,
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,12 +1,11 @@
 # app/api/routes/sessions.py
 from __future__ import annotations
 
-from fastapi import APIRouter
-
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
 from app.services.orchestrator_service import OrchestratorService
-from app.dependencies import get_orchestrator_service  # typical DI pattern
+from app.api.dependencies import get_orchestrator_service
 
 router = APIRouter()
 
@@ -20,7 +19,7 @@ class SessionCreateRequest(BaseModel):
 @router.post("/", summary="Create a new agent session")
 async def create_session(
     body: SessionCreateRequest,
-    orchestrator: OrchestratorService = get_orchestrator_service(),
+    orchestrator: OrchestratorService = Depends(get_orchestrator_service),
 ):
     session = await orchestrator.start_session(
         created_by=body.created_by,
