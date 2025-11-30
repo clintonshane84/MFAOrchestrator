@@ -48,7 +48,7 @@ def init_container() -> None:
     _registry.register(build_default_devops_agent(llm))
     _registry.register(build_default_qa_agent(llm))
     _registry.register(build_default_technical_lead_agent(llm))
-    _registry.register(build_default_system_architect_agent(llm))
+    _registry.register(build_default_system_architect_agent(llm))   # NEW
     _registry.register(build_default_backend_dev_agent(llm))
 
     _initialized = True
