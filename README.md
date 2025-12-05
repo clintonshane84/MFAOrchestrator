@@ -274,8 +274,11 @@ You now have a complete self-consistent scaffold:
 Ready for a human developer to:
 
 👉 Fill in the business logic
+
 👉 Implement integrations
+
 👉 Build real features
+
 👉 Write real tests
 
 The entire **scaffold can be generated in minutes for pennies**.
