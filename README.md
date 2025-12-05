@@ -135,16 +135,16 @@ Interfaces, dependency injection, clear service boundaries, and LLM adapters ens
 ```mermaid
 flowchart TD
 
-User[Human System Admin] --> API[FastAPI Endpoints]
+    User[Human System Admin] --> API[FastAPI Endpoints]
 
-API --> WorkflowSvc[ProjectWorkflowService]
-WorkflowSvc --> Orchestrator[OrchestratorService]
+    API --> WorkflowSvc[Project Workflow Service]
+    WorkflowSvc --> Orchestrator[Orchestrator Service]
 
-Orchestrator --> Agents[Specialised Agents]
-Agents --> LLM[LLM Adapter (GPT-5-mini / nano)]
+    Orchestrator --> Agents[Specialised Agents]
+    Agents --> LLM[LLM Adapter using GPT5-mini or nano]
 
-WorkflowSvc --> DB[(Postgres + SQLModel)]
-DB --> WorkflowSvc
+    WorkflowSvc --> DB[(Postgres + SQLModel)]
+    DB --> WorkflowSvc
 ```
 
 ---
