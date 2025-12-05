@@ -4,9 +4,9 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
+from app.domain.models.workflow import ProjectScaffoldResult
 from app.services.orchestrator_service import OrchestratorService
 from app.services.project_workflow_service import ProjectWorkflowService
-from app.domain.models.workflows import ProjectScaffoldResult
 from app.api.dependencies import get_orchestrator_service
 
 router = APIRouter()
