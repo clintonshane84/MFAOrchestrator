@@ -78,7 +78,7 @@ class SessionService(ISessionService):
         rows: List[MessageDB] = result.all()
         messages: list[Message] = []
         for row in rows:
-            metadata = row.metadata or {}
+            metadata = row.meta or {}
             # Ensure metadata is dict[str, str] for the domain model
             messages.append(
                 Message(

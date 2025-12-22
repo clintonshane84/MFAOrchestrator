@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from fastapi import Depends
 
+from app.agents.technical_lead_agent import build_default_technical_lead_agent
 from app.core.config import get_settings
 from app.core.db import get_session
 from app.agents.registry import AgentRegistry

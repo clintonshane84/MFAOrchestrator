@@ -5,10 +5,10 @@ import json
 import uuid
 from typing import Any
 
+from app.domain.models.workflow import ProjectScaffoldResult
 from app.services.orchestrator_service import OrchestratorService
 from app.domain.models.tasks import TaskType, TaskPriority
 from app.domain.models.messages import Message, MessageRole
-from app.domain.models.workflows import ProjectScaffoldResult
 
 
 class ProjectWorkflowService:
