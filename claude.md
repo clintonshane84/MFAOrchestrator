@@ -2,7 +2,7 @@
 # Note: This project uses the AIDLC framework
 
 ## Loading AIDLC Framework
-The complete adaptive workflow is defined in `.aidlc/CLAUDE.md`. 
+The complete adaptive workflow is defined in `aidlc-framework/CLAUDE.md`. 
 This submodule is loaded first for all rule details and workflow logic.
 
 ---
